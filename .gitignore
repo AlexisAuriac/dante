@@ -1,0 +1,11 @@
+*.o
+*.a
+*.gc*
+*~
+*#*
+vgcore.*
+generator/generator
+solver/solver
+tournament/generator
+tournament/solver
+units
