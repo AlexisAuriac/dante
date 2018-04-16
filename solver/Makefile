@@ -7,11 +7,18 @@
 
 CC		=	gcc
 
-SRC		=	src/main.c	\
-			src/parse_arg.c	\
-			src/load_map.c
+MAZE_DIR	=	src/maze
 
-OBJ		=	$(SRC:.c=.o)
+SRC_MAZE	=	$(MAZE_DIR)/maze.c			\
+			$(MAZE_DIR)/load_maze.c			\
+			$(MAZE_DIR)/load_maze_dimensions.c	\
+			$(MAZE_DIR)/load_maze_cells.c
+
+SRC		=	src/main.c			\
+			src/parse_arg.c
+
+OBJ		=	$(SRC:.c=.o)		\
+			$(SRC_MAZE:.c=.o)
 
 CPPFLAGS	+=	-I include
 

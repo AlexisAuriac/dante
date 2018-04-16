@@ -11,7 +11,7 @@
 typedef enum {
 	WALL,
 	FREE,
-	WAY
+	PATH
 } type_t;
 
 typedef struct cell {
@@ -19,11 +19,11 @@ typedef struct cell {
 	int dist :30;
 } cell_t;
 
-typedef struct map {
+typedef struct maze {
 	int width;
 	int height;
 	char *file;
 	cell_t **cells;
-} map_t;
+} maze_t;
 
 #endif
