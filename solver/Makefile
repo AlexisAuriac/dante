@@ -7,7 +7,9 @@
 
 CC		=	gcc
 
-SRC		=	src/main.c
+SRC		=	src/main.c	\
+			src/parse_arg.c	\
+			src/load_map.c
 
 OBJ		=	$(SRC:.c=.o)
 
