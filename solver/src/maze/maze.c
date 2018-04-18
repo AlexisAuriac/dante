@@ -6,7 +6,8 @@
 */
 
 #include <stdlib.h>
-#include "my.h"
+#include <stdio.h>
+#include <stdbool.h>
 #include "solver.h"
 
 void maze_destroy(maze_t *maze)
@@ -20,13 +21,13 @@ void maze_destroy(maze_t *maze)
 
 void maze_display(maze_t *maze)
 {
-	my_printf("width = %d\n", maze->width);
-	my_printf("height = %d\n", maze->height);
-	my_putstr(maze->file);
-	my_putchar('\n');
+	printf("width = %d\n", maze->width);
+	printf("height = %d\n\n", maze->height);
+	puts(maze->file);
+	puts("\n\n");
 	for (int i = 0 ; i < maze->height ; ++i) {
 		for (int j = 0 ; j < maze->width ; ++j)
-			my_put_nbr(maze->cells[i][j].type);
-		my_putchar('\n');
+			printf("%d", maze->cells[i][j].type);
+		putchar('\n');
 	}
 }

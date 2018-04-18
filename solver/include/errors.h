@@ -26,4 +26,8 @@ static const char ERROR_MAZE_NO_START[] =
 static const char ERROR_MAZE_VARIABLE_LINE_LENGTH[] =
 "Invalid maze: maze must a rectangle\n";
 
+//path
+static const char ERROR_NO_PATH[] =
+"No path\n";
+
 #endif

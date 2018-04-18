@@ -13,8 +13,7 @@
 static void load_cell_line(maze_t *maze, int line)
 {
 	for (int j = 0 ; j < maze->width ; ++j) {
-		maze->cells[line][j].dist = -1;
-		if (maze->file[line * (maze->height + 1) + j] == 'X')
+		if (maze->file[line * (maze->width + 1) + j] == 'X')
 			maze->cells[line][j].type = WALL;
 		else
 			maze->cells[line][j].type = FREE;
