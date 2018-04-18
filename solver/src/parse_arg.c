@@ -12,10 +12,10 @@
 bool parse_arg(int ac)
 {
 	if (ac < 2) {
-		my_putstr(ERROR_NOT_ENOUGH_ARG);
+		puts(ERROR_NOT_ENOUGH_ARG);
 		return (false);
 	} else if (ac > 2) {
-		my_putstr(ERROR_TOO_MANY_ARG);
+		puts(ERROR_TOO_MANY_ARG);
 		return (false);
 	}
 	return (true);

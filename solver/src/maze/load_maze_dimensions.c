@@ -17,17 +17,17 @@ static bool count_maze_lines(maze_t *maze)
 	for (i = 0 ; maze->file[i] ; ++i) {
 		if ((i + 1) % (maze->width + 1) == 0) {
 			if (maze->file[i] != '\n') {
-				my_putstr(ERROR_MAZE_VARIABLE_LINE_LENGTH);
+				puts(ERROR_MAZE_VARIABLE_LINE_LENGTH);
 				return (false);
 			}
 			++maze->height;
 		}
 	}
 	if (maze->file[i - 1] == '\n') {
-		my_putstr(ERROR_MAZE_ENDL_FINISHING_FILE);
+		puts(ERROR_MAZE_ENDL_FINISHING_FILE);
 		return (false);
 	} else if (maze->file[i - 1] == 'X') {
-		my_putstr(ERROR_MAZE_NO_EXIT);
+		puts(ERROR_MAZE_NO_EXIT);
 		return (false);
 	}
 	return (true);

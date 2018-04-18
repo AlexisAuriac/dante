@@ -9,19 +9,22 @@ CC		=	gcc
 
 MAZE_DIR	=	src/maze
 
+ALGO_DIR	=	src/a_star
+
 SRC_MAZE	=	$(MAZE_DIR)/maze.c			\
 			$(MAZE_DIR)/load_maze.c			\
-			$(MAZE_DIR)/load_maze_dimensions.c	\
-			$(MAZE_DIR)/load_maze_cells.c
+			$(MAZE_DIR)/load_maze_dimensions.c
+
+SRC_ALGO	=	$(ALGO_DIR)/a_star.c		\
+			$(ALGO_DIR)/lists.c		\
+			$(ALGO_DIR)/get_neighbors.c
 
 SRC		=	src/main.c			\
-			src/parse_arg.c			\
-			src/a_star.c			\
-			src/lists.c			\
-			src/get_neighbors.c
+			src/parse_arg.c
 
 OBJ		=	$(SRC:.c=.o)		\
-			$(SRC_MAZE:.c=.o)
+			$(SRC_MAZE:.c=.o)	\
+			$(SRC_ALGO:.c=.o)
 
 CPPFLAGS	+=	-I include
 

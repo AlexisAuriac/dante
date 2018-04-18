@@ -38,7 +38,7 @@ node_t *create_node(int x, int y, maze_t *maze)
 bool get_neighbor
 (node_t **neighbor, node_t **open_list, node_t *closed_list, maze_t *maze, int x, int y)
 {
-	if (maze->cells[y][x].type == WALL || in_list(closed_list, x, y))
+	if (maze->cells[y][x] == WALL || in_list(closed_list, x, y))
 		return (false);
 	*neighbor = in_list(*open_list, x, y);
 	if (*neighbor == NULL) {

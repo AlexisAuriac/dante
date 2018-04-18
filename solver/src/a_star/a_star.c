@@ -14,7 +14,7 @@
 void build_path(node_t *end, maze_t *maze)
 {
 	while (end) {
-		maze->file[end->y * (maze->width + 1) + end->x] = 'o';
+		maze->file[end->y * (maze->width + 1) + end->x] = PATH;
 		end = end->came_from;
 	}
 }

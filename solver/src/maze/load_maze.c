@@ -13,7 +13,7 @@
 #include "my.h"
 #include "solver.h"
 
-char *load_maze_file(int fd, const char *file_name)
+static char *load_maze_file(int fd, const char *file_name)
 {
 	struct stat s;
 	char *content = NULL;
@@ -24,7 +24,7 @@ char *load_maze_file(int fd, const char *file_name)
 		return (NULL);
 	}
 	if (s.st_size == 0) {
-		my_putstr(ERROR_MAZE_EMPTY);
+		puts(ERROR_MAZE_EMPTY);
 		return (NULL);
 	}
 	content = malloc(sizeof(char) * (s.st_size + 1));
@@ -37,20 +37,33 @@ char *load_maze_file(int fd, const char *file_name)
 	return (content);
 }
 
-bool error_maze_file(char *file)
+static bool error_maze_file(char *file)
 {
 	if (!my_str_is(file, "*X\n")) {
-		my_putstr(ERROR_MAZE_BAD_CHARACTER);
+		puts(ERROR_MAZE_BAD_CHARACTER);
 		return (true);
 	}
 	if (file[0] != '*') {
-		my_putstr(ERROR_MAZE_NO_START);
+		puts(ERROR_MAZE_NO_START);
 		return (true);
 	}
 	return (false);
 }
 
-bool load_stats_maze(maze_t *maze, int fd, const char *file_name)
+static bool load_cells(maze_t *maze)
+{
+	maze->cells = malloc(sizeof(char *) * maze->width);
+	if (maze->cells == NULL) {
+		perror("malloc");
+		return (false);
+	}
+	maze->cells[0] = maze->file;
+	for (int i = 0 ; i < maze->height ; ++i)
+		maze->cells[i] = maze->file + (maze->width + 1) * i;
+	return (true);
+}
+
+static bool load_stats_maze(maze_t *maze, int fd, const char *file_name)
 {
 	maze->file = load_maze_file(fd, file_name);
 	if (maze->file == NULL)
