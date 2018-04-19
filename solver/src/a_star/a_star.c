@@ -40,9 +40,10 @@ void print_list(node_t *list)
 	while (list) {
 		printf("%d : %d", list->x, list->y);
 		if (list->came_from != NULL)
-			printf(", came from %d : %d\n", list->came_from->x, list->came_from->y);
+			printf(", came from %d : %d, ", list->came_from->x, list->came_from->y);
 		else
-			printf(", start\n");
+			printf(", start, ");
+		printf("%d from start, %d from end, tot = %d\n", list->start_dist, list->end_dist, list->tot_dist);
 		list = list->next;
 	}
 	putchar('\n');
@@ -70,7 +71,7 @@ bool a_star(maze_t *maze)
 		}
 		for (int i = 0 ; neighbors[i] ; ++i) {
 			if (neighbors[i]->came_from == closed_list || neighbors[i]->start_dist >= closed_list->start_dist + 1) {
-				neighbors[i]->start_dist = neighbors[i]->start_dist >= closed_list->start_dist + 1;
+				neighbors[i]->start_dist = closed_list->start_dist + 1;
 				neighbors[i]->came_from = closed_list;
 			}
 		}

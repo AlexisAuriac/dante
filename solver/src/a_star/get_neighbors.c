@@ -43,7 +43,6 @@ bool get_neighbor
 	*neighbor = in_list(*open_list, x, y);
 	if (*neighbor == NULL) {
 		*neighbor = create_node(x, y, maze);
-		(*neighbor)->start_dist = closed_list->start_dist + 1;
 		(*neighbor)->tot_dist = (*neighbor)->end_dist + (*neighbor)->start_dist;
 		(*neighbor)->came_from = closed_list;
 		add_open_list(open_list, *neighbor);
