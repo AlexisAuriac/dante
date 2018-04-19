@@ -70,8 +70,9 @@ bool a_star(maze_t *maze)
 			return (false);
 		}
 		for (int i = 0 ; neighbors[i] ; ++i) {
-			if (neighbors[i]->came_from == closed_list || neighbors[i]->start_dist >= closed_list->start_dist + 1) {
+			if (neighbors[i]->start_dist >= closed_list->start_dist + 1) {
 				neighbors[i]->start_dist = closed_list->start_dist + 1;
+				neighbors[i]->tot_dist = neighbors[i]->start_dist + neighbors[i]->end_dist;
 				neighbors[i]->came_from = closed_list;
 			}
 		}
