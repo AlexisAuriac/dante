@@ -19,8 +19,10 @@ void build_path(node_t *end, maze_t *maze)
 	}
 }
 
-void clean_up_lists(node_t *closed_list, node_t *open_list)
+void clean_up_lists(a_star_t *data)
 {
+	node_t *closed_list = data->closed_list;
+	node_t *open_list = data->open_list;
 	node_t *to_del = NULL;
 
 	while (closed_list) {
@@ -39,45 +41,34 @@ void print_list(node_t *list)
 {
 	while (list) {
 		printf("%d : %d", list->x, list->y);
-		if (list->came_from != NULL)
-			printf(", came from %d : %d, ", list->came_from->x, list->came_from->y);
-		else
-			printf(", start, ");
-		printf("%d from start, %d from end, tot = %d\n", list->start_dist, list->end_dist, list->tot_dist);
-		list = list->next;
 	}
 	putchar('\n');
 }
 
+bool is_end(node_t *node, maze_t *maze)
+{
+	return (node->x == maze->width - 1 && node->y == maze->height - 1);
+}
+
 bool a_star(maze_t *maze)
 {
-	node_t *closed_list = NULL;
-	node_t *open_list = init_open_list(maze);
-	node_t *neighbors[5] = {NULL};
+	a_star_t data = {NULL};
 
-	if (open_list == NULL)
+	if (!init_open_list(&data.open_list, maze))
 		return (false);
-	while (open_list != NULL) {
-		if (open_list->x == maze->width - 1 && open_list->y == maze->height - 1) {
-			build_path(open_list, maze);
-			clean_up_lists(closed_list, open_list);
+	while (data.open_list != NULL) {
+		if (is_end(data.open_list, maze)) {
+			build_path(data.open_list, maze);
+			clean_up_lists(&data);
 			return (true);
 		}
-		add_closed_list(&closed_list, &open_list);
-		memset(neighbors, 0, 4 * sizeof(node_t *));
-		if (!get_neighbors(neighbors, &open_list, maze, closed_list)) {
-			clean_up_lists(closed_list, open_list);
+		add_closed_list(&data);
+		if (!get_neighbors(&data, maze)) {
+			clean_up_lists(&data);
 			return (false);
 		}
-		for (int i = 0 ; neighbors[i] ; ++i) {
-			if (neighbors[i]->start_dist >= closed_list->start_dist + 1) {
-				neighbors[i]->start_dist = closed_list->start_dist + 1;
-				neighbors[i]->tot_dist = neighbors[i]->start_dist + neighbors[i]->end_dist;
-				neighbors[i]->came_from = closed_list;
-			}
-		}
 	}
-	clean_up_lists(closed_list, open_list);
+	clean_up_lists(&data);
 	puts(ERROR_NO_PATH);
 	return (false);
 }

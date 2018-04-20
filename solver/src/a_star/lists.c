@@ -10,13 +10,13 @@
 #include <stdbool.h>
 #include "solver.h"
 
-node_t *init_open_list(maze_t *maze)
+bool init_open_list(node_t **open_list, maze_t *maze)
 {
 	node_t *start = malloc(sizeof(node_t));
 
 	if (start == NULL) {
 		perror("malloc");
-		return (NULL);
+		return (false);
 	}
 	start->x = 0;
 	start->y = 0;
@@ -25,27 +25,29 @@ node_t *init_open_list(maze_t *maze)
 	start->tot_dist = start->end_dist;
 	start->came_from = NULL;
 	start->next = NULL;
-	return (start);
+	*open_list = start;
+	return (true);
 }
 
-void add_closed_list(node_t **closed_list, node_t **open_list)
+void add_closed_list(a_star_t *data)
 {
-	node_t *tmp = (*open_list)->next;
+	node_t *tmp = data->open_list->next;
 
-	(*open_list)->next = *closed_list;
-	*closed_list = *open_list;
-	*open_list = tmp;
+	data->open_list->next = data->closed_list;
+	data->closed_list = data->open_list;
+	data->open_list = tmp;
 }
 
 void add_open_list(node_t **open_list, node_t *new_node)
 {
 	node_t *current = *open_list;
+	int new_dist = new_node->tot_dist;
 
-	if (current == NULL || new_node->tot_dist < current->tot_dist) {
+	if (current == NULL || new_dist < current->tot_dist) {
 		new_node->next = current;
 		*open_list = new_node;
 	} else {
-		while (current->next && new_node->tot_dist > current->next->tot_dist)
+		while (current->next && new_dist > current->next->tot_dist)
 			current = current->next;
 		new_node->next = current->next;
 		current->next = new_node;

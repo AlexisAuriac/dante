@@ -30,11 +30,11 @@ bool load_maze_dimensions(maze_t *maze);
 bool a_star(maze_t *maze);
 
 //lists.c
-node_t *init_open_list(maze_t *maze);
-void add_closed_list(node_t **closed_list, node_t **open_list);
+bool init_open_list(node_t **open_list, maze_t *maze);
+void add_closed_list(a_star_t *data);
 void add_open_list(node_t **open_list, node_t *new_node);
 
 //get_neighbors.c
-bool get_neighbors(node_t *[5], node_t **, maze_t *, node_t *);
+bool get_neighbors(a_star_t *data, maze_t *);
 
 #endif

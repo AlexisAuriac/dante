@@ -36,4 +36,10 @@ typedef struct node {
 	struct node *next;
 } node_t;
 
+typedef struct a_star {
+	node_t *open_list;
+	node_t *closed_list;
+	node_t *neighbors[5];
+} a_star_t;
+
 #endif
