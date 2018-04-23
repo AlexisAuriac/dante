@@ -63,6 +63,7 @@ bool a_star(maze_t *maze)
 			return (true);
 		}
 		add_closed_list(&data);
+		maze->memberships[data.closed_list->y][data.closed_list->x] = CLOSED;
 		if (!get_neighbors(&data, maze)) {
 			clean_up_lists(&data);
 			return (false);

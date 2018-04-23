@@ -26,6 +26,9 @@ maze_t *load_maze(const char *file_name);
 //maze/load_maze_dimensions.c
 bool load_maze_dimensions(maze_t *maze);
 
+//maze/load_cells.c
+bool load_cells(maze_t *maze);
+
 //a_star.c
 bool a_star(maze_t *maze);
 

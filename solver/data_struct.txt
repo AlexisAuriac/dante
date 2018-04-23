@@ -1,0 +1,14 @@
+Closed list:
+- actual -> linked list
+- array pointer
+
+Open list:
+- actual -> organised linked list
+- binary search tree
+- skip list
+- tree
+
+Maze:
+- actual -> array of strings
+- graph -> very fast, clean, heavy
+- adjacency matrix -> fast

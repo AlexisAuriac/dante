@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <unistd.h>
+#include <string.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <stdbool.h>
@@ -48,19 +49,6 @@ static bool error_maze_file(char *file)
 		return (true);
 	}
 	return (false);
-}
-
-static bool load_cells(maze_t *maze)
-{
-	maze->cells = malloc(sizeof(char *) * maze->width);
-	if (maze->cells == NULL) {
-		perror("malloc");
-		return (false);
-	}
-	maze->cells[0] = maze->file;
-	for (int i = 0 ; i < maze->height ; ++i)
-		maze->cells[i] = maze->file + (maze->width + 1) * i;
-	return (true);
 }
 
 static bool load_stats_maze(maze_t *maze, int fd, const char *file_name)

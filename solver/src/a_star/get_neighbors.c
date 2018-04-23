@@ -36,6 +36,7 @@ node_t *create_node(int x, int y, maze_t *maze, node_t *came_from)
 	node->tot_dist = node->start_dist + node->end_dist + 1;
 	node->came_from = came_from;
 	node->next = NULL;
+	maze->memberships[y][x] = OPEN;
 	return (node);
 }
 
@@ -48,7 +49,7 @@ void update_node(node_t *outdated, node_t *came_from)
 
 bool get_neighbor(node_t **neighbor, a_star_t *data, maze_t *maze, int x, int y)
 {
-	if (maze->cells[y][x] == WALL || in_list(data->closed_list, x, y))
+	if (maze->cells[y][x] == WALL || maze->memberships[y][x] == CLOSED)
 		return (false);
 	*neighbor = in_list(data->open_list, x, y);
 	if (*neighbor != NULL) {

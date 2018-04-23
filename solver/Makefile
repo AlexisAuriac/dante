@@ -13,7 +13,8 @@ ALGO_DIR	=	src/a_star
 
 SRC_MAZE	=	$(MAZE_DIR)/maze.c			\
 			$(MAZE_DIR)/load_maze.c			\
-			$(MAZE_DIR)/load_maze_dimensions.c
+			$(MAZE_DIR)/load_maze_dimensions.c	\
+			$(MAZE_DIR)/load_cells.c
 
 SRC_ALGO	=	$(ALGO_DIR)/a_star.c		\
 			$(ALGO_DIR)/lists.c		\

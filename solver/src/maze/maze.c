@@ -14,6 +14,9 @@ void maze_destroy(maze_t *maze)
 {
 	free(maze->file);
 	free(maze->cells);
+	for (int i = 0 ; i < maze->height ; ++i)
+		free(maze->memberships[i]);
+	free(maze->memberships);
 	free(maze);
 }
 

@@ -8,22 +8,26 @@
 #ifndef TYPEDEF_H
 #define TYPEDEF_H
 
+#include <stdint.h>
+
 enum {
 	WALL='X',
-	FREE='*',
+	EMPTY='*',
 	PATH='o'
 };
 
-typedef struct vector2u {
-	unsigned int x;
-	unsigned int y;
-} vector2u_t;
+enum {
+	FREE,
+	OPEN,
+	CLOSED
+};
 
 typedef struct maze {
 	int width;
 	int height;
 	char *file;
 	char **cells;
+	uint8_t **memberships;
 } maze_t;
 
 typedef struct node {
