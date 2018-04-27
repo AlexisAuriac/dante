@@ -8,8 +8,8 @@
 #ifndef SOLVER_H
 #define SOLVER_H
 
-#include "const.h"
 #include "typedef.h"
+#include "const.h"
 #include "macro.h"
 #include "errors.h"
 
@@ -34,7 +34,7 @@ bool a_star(maze_t *maze);
 
 //lists.c
 bool init_open_list(node_t **open_list, maze_t *maze);
-void add_closed_list(a_star_t *data);
+void add_closed_list(a_star_t *data, maze_t *maze);
 void add_open_list(node_t **open_list, node_t *new_node);
 
 //get_neighbors.c

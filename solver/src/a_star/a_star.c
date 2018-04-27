@@ -14,7 +14,7 @@
 void build_path(node_t *end, maze_t *maze)
 {
 	while (end) {
-		maze->file[end->y * (maze->width + 1) + end->x] = PATH;
+		maze->file[end->pos.y * (maze->width + 1) + end->pos.x] = PATH;
 		end = end->came_from;
 	}
 }
@@ -40,14 +40,15 @@ void clean_up_lists(a_star_t *data)
 void print_list(node_t *list)
 {
 	while (list) {
-		printf("%d : %d", list->x, list->y);
+		printf("%d : %d", list->pos.x, list->pos.y);
 	}
 	putchar('\n');
 }
 
 bool is_end(node_t *node, maze_t *maze)
 {
-	return (node->x == maze->width - 1 && node->y == maze->height - 1);
+	return (node->pos.x == maze->width - 1 &&
+		node->pos.y == maze->height - 1);
 }
 
 bool a_star(maze_t *maze)
@@ -62,8 +63,7 @@ bool a_star(maze_t *maze)
 			clean_up_lists(&data);
 			return (true);
 		}
-		add_closed_list(&data);
-		maze->memberships[data.closed_list->y][data.closed_list->x] = CLOSED;
+		add_closed_list(&data, maze);
 		if (!get_neighbors(&data, maze)) {
 			clean_up_lists(&data);
 			return (false);

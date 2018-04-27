@@ -18,7 +18,8 @@ SRC_MAZE	=	$(MAZE_DIR)/maze.c			\
 
 SRC_ALGO	=	$(ALGO_DIR)/a_star.c		\
 			$(ALGO_DIR)/lists.c		\
-			$(ALGO_DIR)/get_neighbors.c
+			$(ALGO_DIR)/get_neighbors.c	\
+			$(ALGO_DIR)/directions_errors.c
 
 SRC		=	src/main.c			\
 			src/parse_arg.c

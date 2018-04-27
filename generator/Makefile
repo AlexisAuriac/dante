@@ -5,7 +5,8 @@
 ## Makefile for generator
 ##
 
-SRC		=	src/main.c
+SRC		=	src/main.c		\
+			src/parse_arg.c
 
 OBJ		=	$(SRC:.c=.o)
 

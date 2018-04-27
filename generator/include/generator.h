@@ -8,10 +8,12 @@
 #ifndef GENERATOR_H
 #define GENERATOR_H
 
-#include "const.h"
 #include "typedef.h"
+#include "const.h"
 #include "macro.h"
+#include "errors.h"
 
-
+//parse_arg.c
+bool parse_arg(int ac, char **av, maze_t *maze);
 
 #endif

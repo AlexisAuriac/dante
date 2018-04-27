@@ -22,6 +22,11 @@ enum {
 	CLOSED
 };
 
+typedef struct vector2u {
+	int x;
+	int y;
+} vector2u_t;
+
 typedef struct maze {
 	int width;
 	int height;
@@ -31,8 +36,7 @@ typedef struct maze {
 } maze_t;
 
 typedef struct node {
-	int x;
-	int y;
+	vector2u_t pos;
 	int start_dist;
 	int end_dist;
 	int tot_dist;
@@ -44,6 +48,7 @@ typedef struct a_star {
 	node_t *open_list;
 	node_t *closed_list;
 	node_t *neighbors[5];
+	int nb_neighbors;
 } a_star_t;
 
 #endif

@@ -18,8 +18,8 @@ bool init_open_list(node_t **open_list, maze_t *maze)
 		perror("malloc");
 		return (false);
 	}
-	start->x = 0;
-	start->y = 0;
+	start->pos.x = 0;
+	start->pos.y = 0;
 	start->start_dist = 0;
 	start->end_dist = maze->width + maze->height - 2;
 	start->tot_dist = start->end_dist;
@@ -29,13 +29,15 @@ bool init_open_list(node_t **open_list, maze_t *maze)
 	return (true);
 }
 
-void add_closed_list(a_star_t *data)
+void add_closed_list(a_star_t *data, maze_t *maze)
 {
 	node_t *tmp = data->open_list->next;
+	vector2u_t pos = data->closed_list->pos;
 
 	data->open_list->next = data->closed_list;
 	data->closed_list = data->open_list;
 	data->open_list = tmp;
+	maze->memberships[pos.y][pos.x] = CLOSED;
 }
 
 void add_open_list(node_t **open_list, node_t *new_node)
