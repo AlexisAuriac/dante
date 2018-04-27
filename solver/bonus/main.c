@@ -9,6 +9,28 @@
 #include <stdbool.h>
 #include "my.h"
 #include "solver.h"
+#include "colors.h"
+
+void maze_display_wcolors(maze_t *maze)
+{
+	for (int i = 0 ; maze->file[i] ; ++i) {
+		switch (maze->file[i]) {
+		case WALL:
+			printf(BLUE "%c", maze->file[i]);
+			break;
+		case EMPTY:
+			printf(CYAN "%c", maze->file[i]);
+			break;
+		case PATH:
+			printf(RED "%c", maze->file[i]);
+			break;
+		default:
+			putchar(maze->file[i]);
+			break;
+		}
+	}
+	printf(RESET);
+}
 
 int main(int ac, UNUSED char **av)
 {
@@ -23,7 +45,7 @@ int main(int ac, UNUSED char **av)
 		maze_destroy(maze);
 		return (MY_EXIT_FAILURE);
 	}
-	printf(maze->file);
+	maze_display_wcolors(maze);
 	maze_destroy(maze);
 	return (MY_EXIT_SUCCESS);
 }

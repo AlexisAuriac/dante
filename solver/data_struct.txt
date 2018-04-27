@@ -1,6 +1,6 @@
 Closed list:
-- actual -> linked list
-- array pointer
+- actual -> linked list + two dimensionnal array
+- array of pointer
 
 Open list:
 - actual -> organised linked list
