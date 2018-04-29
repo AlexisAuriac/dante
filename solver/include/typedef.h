@@ -22,10 +22,10 @@ enum {
 	CLOSED
 };
 
-typedef struct vector2u {
+typedef struct vector2i {
 	int x;
 	int y;
-} vector2u_t;
+} vector2i_t;
 
 typedef struct maze {
 	int width;
@@ -36,7 +36,7 @@ typedef struct maze {
 } maze_t;
 
 typedef struct node {
-	vector2u_t pos;
+	vector2i_t pos;
 	int start_dist;
 	int end_dist;
 	int tot_dist;

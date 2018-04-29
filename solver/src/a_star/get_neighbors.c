@@ -21,7 +21,7 @@ node_t *in_list(node_t *list, int x, int y)
 	return (NULL);
 }
 
-node_t *create_node(vector2u_t *pos, maze_t *maze, node_t *came_from)
+node_t *create_node(vector2i_t *pos, maze_t *maze, node_t *came_from)
 {
 	node_t *node = malloc(sizeof(node_t));
 
@@ -46,7 +46,7 @@ void update_node(node_t *outdated, node_t *came_from)
 	outdated->came_from = came_from;
 }
 
-void get_neighbor(a_star_t *data, maze_t *maze, vector2u_t *pos)
+void get_neighbor(a_star_t *data, maze_t *maze, vector2i_t *pos)
 {
 	node_t **neighbor = &data->neighbors[data->nb_neighbors];
 
@@ -66,7 +66,7 @@ void get_neighbor(a_star_t *data, maze_t *maze, vector2u_t *pos)
 
 bool get_neighbors(a_star_t *data, maze_t *maze)
 {
-	vector2u_t pos;
+	vector2i_t pos;
 
 	memset(data->neighbors, 0, 4 * sizeof(node_t *));
 	data->nb_neighbors = 0;

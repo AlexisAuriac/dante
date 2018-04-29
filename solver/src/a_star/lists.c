@@ -32,11 +32,12 @@ bool init_open_list(node_t **open_list, maze_t *maze)
 void add_closed_list(a_star_t *data, maze_t *maze)
 {
 	node_t *tmp = data->open_list->next;
-	vector2u_t pos = data->closed_list->pos;
+	vector2i_t pos;
 
 	data->open_list->next = data->closed_list;
 	data->closed_list = data->open_list;
 	data->open_list = tmp;
+	pos = data->closed_list->pos;
 	maze->memberships[pos.y][pos.x] = CLOSED;
 }
 

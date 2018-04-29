@@ -13,14 +13,15 @@ typedef struct vector2i {
 	int y;
 } vector2i_t;
 
-typedef struct cell {
-
+typedef enum {
+	WALL='X',
+	EMPTY='*'
 } cell_t;
 
 typedef struct maze {
 	vector2i_t size;
 	char *string;
-	cell_t **cells;
+	char **cells;
 	bool perfect;
 } maze_t;
 

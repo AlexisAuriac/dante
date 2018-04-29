@@ -5,10 +5,17 @@
 ## Makefile for generator
 ##
 
-SRC		=	src/main.c		\
-			src/parse_arg.c
+ALGO_DIR	=	$(realpath src/recursive_backtracker)
 
-OBJ		=	$(SRC:.c=.o)
+SRC_ALGO	=	$(ALGO_DIR)/rec_back.c		\
+			$(ALGO_DIR)/error_moves.c
+
+SRC		=	src/main.c		\
+			src/parse_arg.c		\
+			src/maze.c
+
+OBJ		=	$(SRC:.c=.o)		\
+			$(SRC_ALGO:.c=.o)
 
 CPPFLAGS	+=	-I include
 

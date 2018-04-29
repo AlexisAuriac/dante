@@ -16,13 +16,13 @@ void maze_display_wcolors(maze_t *maze)
 	for (int i = 0 ; maze->file[i] ; ++i) {
 		switch (maze->file[i]) {
 		case WALL:
-			printf(BLUE "%c", maze->file[i]);
+			printf(RED "%c" RESET, maze->file[i]);
 			break;
 		case EMPTY:
-			printf(CYAN "%c", maze->file[i]);
+			printf(WHITE "%c" RESET, maze->file[i]);
 			break;
 		case PATH:
-			printf(RED "%c", maze->file[i]);
+			printf(GREEN "%c" RESET, maze->file[i]);
 			break;
 		default:
 			putchar(maze->file[i]);
