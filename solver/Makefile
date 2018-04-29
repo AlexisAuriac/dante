@@ -30,7 +30,7 @@ OBJ		=	$(SRC:.c=.o)		\
 
 CPPFLAGS	+=	-I include
 
-CFLAGS		+=	-Wall -Wextra
+CFLAGS		+=	-Wall -Wextra -Ofast
 
 LDFLAGS		+=	-L../lib/ -lmy
 
