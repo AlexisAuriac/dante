@@ -11,7 +11,7 @@
 #include "solver.h"
 #include "colors.h"
 
-void maze_display_wcolors(maze_t *maze)
+static void maze_display_wcolors(maze_t *maze)
 {
 	for (int i = 0 ; maze->file[i] ; ++i) {
 		switch (maze->file[i]) {

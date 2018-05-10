@@ -47,7 +47,7 @@ typedef struct node {
 typedef struct a_star {
 	node_t *open_list;
 	node_t *closed_list;
-	node_t *neighbors[5];
+	node_t *neighbors[8 + 1];//NB_DIRECTIONS + 1
 	int nb_neighbors;
 } a_star_t;
 
