@@ -18,7 +18,6 @@ static char *load_maze_file(int fd, const char *file_name)
 {
 	struct stat s;
 	char *content = NULL;
-	int i = 0;
 
 	if (stat(file_name, &s) == -1) {
 		perror("stat");
@@ -33,8 +32,8 @@ static char *load_maze_file(int fd, const char *file_name)
 		perror("malloc");
 		return (NULL);
 	}
-	for (; read(fd, content + i, 1) ; ++i);
-	content[i] = '\0';
+	read(fd, content, s.st_size);
+	content[s.st_size] = '\0';
 	return (content);
 }
 

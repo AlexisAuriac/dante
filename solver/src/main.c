@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 #include "my.h"
 #include "solver.h"
 

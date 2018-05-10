@@ -3,10 +3,10 @@ Closed list:
 - array of pointer
 
 Open list:
-- actual -> organised linked list
+- actual -> priority queue: best in, first out
 - binary search tree
 - skip list
-- tree
+- AVL tree
 
 Maze:
 - actual -> array of strings
