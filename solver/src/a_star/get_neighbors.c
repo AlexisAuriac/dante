@@ -54,9 +54,10 @@ void get_neighbor(a_star_t *data, maze_t *maze, vector2i_t *pos)
 		maze->memberships[pos->y][pos->x] == CLOSED)
 		return;
 	++data->nb_neighbors;
-	*neighbor = in_list(data->open_list, pos->x, pos->y);
-	if (*neighbor != NULL &&
-		(*neighbor)->start_dist >= data->closed_list->start_dist + 1) {
+	if (maze->memberships[pos->y][pos->x] == OPEN) {
+		*neighbor = in_list(data->open_list, pos->x, pos->y);
+		if (*neighbor != NULL &&
+		(*neighbor)->start_dist >= data->closed_list->start_dist + 1)
 			update_node(*neighbor, data->closed_list);
 	} else {
 		*neighbor = create_node(pos, maze, data->closed_list);

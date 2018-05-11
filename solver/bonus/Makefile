@@ -39,7 +39,7 @@ NAME		=	solver
 
 all	:	$(NAME)
 
-$(NAME)	:	lib	$(OBJ)
+$(NAME)	:	lib $(OBJ)
 		$(CC) -o $(NAME) $(OBJ) $(LDFLAGS)
 
 lib	:
