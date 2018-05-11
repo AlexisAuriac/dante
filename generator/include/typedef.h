@@ -25,4 +25,10 @@ typedef struct maze {
 	bool perfect;
 } maze_t;
 
+typedef struct stack {
+	int x;
+	int y;
+	struct stack *next;
+} stack_t;
+
 #endif

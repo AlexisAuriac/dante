@@ -8,7 +8,8 @@
 ALGO_DIR	=	$(realpath src/recursive_backtracker)
 
 SRC_ALGO	=	$(ALGO_DIR)/rec_back.c		\
-			$(ALGO_DIR)/error_moves.c
+			$(ALGO_DIR)/error_moves.c	\
+			$(ALGO_DIR)/stack.c
 
 SRC		=	src/main.c		\
 			src/parse_arg.c		\
