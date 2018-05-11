@@ -47,6 +47,7 @@ int get_nb_empty(maze_t *maze, int x, int y)
 
 void add_cell(maze_t *maze, stack_t *stack)
 {
+	int max_link = (maze->perfect) ? 1 : 2;
 	int x;
 	int y;
 
@@ -54,7 +55,7 @@ void add_cell(maze_t *maze, stack_t *stack)
 		x = stack->x;
 		y = stack->y;
 		pop(&stack);
-		if (get_nb_empty(maze, x, y) > 1)
+		if (get_nb_empty(maze, x, y) > max_link)
 			continue;
 		maze->cells[y][x] = EMPTY;
 		get_moves(maze, x, y, &stack);
