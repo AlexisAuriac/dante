@@ -43,5 +43,6 @@ stack_t *init_stack(void)
 	}
 	stack->x = 0;
 	stack->y = 0;
+	stack->next = NULL;
 	return (stack);
 }
