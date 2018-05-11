@@ -10,3 +10,4 @@ tournament/generator
 tournament/solver
 units
 algo_examples
+*.maze
